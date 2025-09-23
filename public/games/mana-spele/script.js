@@ -18,7 +18,7 @@ let yPositions = [250, 550, 850, 1150];
 //50
 let timerId = null;
 
-const music = new Audio("background.mp3");
+const music = new Audio("Background.mp3");
 music.loop = true;
 music.volume = 0.5;
 
@@ -229,4 +229,5 @@ canvas.addEventListener("click", (e) => {
             }, 1000);
         }
     }
+
 });
