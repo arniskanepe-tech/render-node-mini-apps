@@ -15,13 +15,14 @@ canvas {
   border: 5px solid white;
   display: block;
 
-  //* Kanva pielāgojas ierīcei, saglabājot proporciju */
-  max-width: 95vw;       //* neplatāka par ~ekrānu */
-  max-height: 90dvh;     //* neaugstāka par ~ekrānu (mobilajos drošāk nekā vh) */
+  /* Kanva pielāgojas ierīcei, saglabājot proporciju */
+  max-width: 95vw;       /* neplatāka par ~ekrānu */
+  max-height: 90dvh;     /* neaugstāka par ~ekrānu (mobilajos drošāk nekā vh) */
   width: auto;
   height: auto;
 }
 @supports not (height: 1dvh) {
   canvas { max-height: 90vh; }
 }
+
 
