@@ -5,6 +5,7 @@ body {
   align-items: center;
   height: 100vh;
   background: #a1e0fd;
+  overflow: hidden;
 }
 
 canvas {
@@ -18,3 +19,4 @@ canvas {
   height: auto;
 
 }
+
