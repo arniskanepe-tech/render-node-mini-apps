@@ -46,6 +46,30 @@ for (let val = 1; val <= 10; val++) {
 const imgBack = new Image();
 imgBack.src = "blue.png";
 
+function getPointer(e) {  //ŠEIT---------------------------------------------------------
+  const rect = canvas.getBoundingClientRect();
+
+  // kompensē 5px borderu, lai nebūtu nobīdes
+  const cs = getComputedStyle(canvas);
+  const bl = parseFloat(cs.borderLeftWidth)  || 0;
+  const bt = parseFloat(cs.borderTopWidth)   || 0;
+  const br = parseFloat(cs.borderRightWidth) || 0;
+  const bb = parseFloat(cs.borderBottomWidth)|| 0;
+
+  const cssW = rect.width  - bl - br;             // redzamais platums bez bordera
+  const cssH = rect.height - bt - bb;             // redzamais augstums bez bordera
+  const scaleX = canvas.width  / cssW;            // 2000 / redzamais platums
+  const scaleY = canvas.height / cssH;            // 1600 / redzamais augstums
+
+  const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+  const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+
+  return {
+    x: (clientX - rect.left - bl) * scaleX,
+    y: (clientY - rect.top  - bt) * scaleY
+  };
+}
+
 // Shuffle utility
 function shuffleArray(arr) {
     for (let i = arr.length - 1; i > 0; i--) {
@@ -183,8 +207,7 @@ canvas.addEventListener("click", (e) => {
     if (timerId === null) startTimer();
     if (isChecking) return;
 
-    const mouseX = e.offsetX;
-    const mouseY = e.offsetY;
+    const { x: mouseX, y: mouseY } = getPointer(e); // ← svarīgi! //seit=-------------------------------------
 
     rects.forEach(rect => {
         if (
@@ -231,3 +254,4 @@ canvas.addEventListener("click", (e) => {
     }
 
 });
+
