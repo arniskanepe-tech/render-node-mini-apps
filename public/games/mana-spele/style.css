@@ -1,10 +1,13 @@
-body {
+html, body {
+  height: 100%;
   margin: 0;
+  background: #a1e0fd;
+}
+
+body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  background: #a1e0fd;
   overflow: hidden;
 }
 
@@ -17,6 +20,8 @@ canvas {
   max-height: 90dvh;     //* neaugstāka par ~ekrānu (mobilajos drošāk nekā vh) */
   width: auto;
   height: auto;
-
+}
+@supports not (height: 1dvh) {
+  canvas { max-height: 90vh; }
 }
 
